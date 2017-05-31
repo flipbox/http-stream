@@ -31,7 +31,6 @@ class Factory
     {
 
         switch (gettype($resource)) {
-
             case 'string':
                 $stream = fopen('php://temp', 'r+');
                 if ($resource !== '') {
@@ -39,30 +38,19 @@ class Factory
                     fseek($stream, 0);
                 }
                 return new Stream($stream, $options);
-
             case 'resource':
                 return new Stream($resource, $options);
-
             case 'object':
-
                 if ($resource instanceof StreamInterface) {
-
                     return $resource;
-
                 } elseif ($resource instanceof \Traversable) {
-
                     return new IteratorStream($resource, $options);
-
                 } elseif (method_exists($resource, '__toString')) {
-
                     return static::createStream((string)$resource, $options);
-
                 }
                 break;
-
             case 'NULL':
                 return new Stream('php://temp', 'r+');
-
         }
 
         throw new InvalidStreamException(

@@ -51,7 +51,6 @@ class IteratorStream implements StreamInterface
         if ($this->iterator instanceof IteratorAggregate) {
             return $this->iterator->getIterator();
         }
-
         return $this->iterator;
     }
 
