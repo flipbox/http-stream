@@ -2,8 +2,8 @@
 
 /**
  * @copyright  Copyright (c) Flipbox Digital Limited
- * @license    https://github.com/flipbox/http/blob/master/LICENSE
- * @link       https://github.com/flipbox/http
+ * @license    https://github.com/flipbox/http-stream/blob/master/LICENSE
+ * @link       https://github.com/flipbox/http-stream
  */
 
 namespace Flipbox\Http\Stream;
@@ -27,7 +27,7 @@ class Factory
      * @return StreamInterface
      * @throws InvalidStreamException
      */
-    public static function createStream($resource = '', array $options = []): StreamInterface
+    public static function create($resource = '', array $options = []): StreamInterface
     {
 
         switch (gettype($resource)) {

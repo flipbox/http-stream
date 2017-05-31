@@ -2,8 +2,8 @@
 
 /**
  * @copyright  Copyright (c) Flipbox Digital Limited
- * @license    https://github.com/flipbox/http/blob/master/LICENSE
- * @link       https://github.com/flipbox/http
+ * @license    https://github.com/flipbox/http-stream/blob/master/LICENSE
+ * @link       https://github.com/flipbox/http-stream
  */
 
 namespace Flipbox\Http\Stream\Exceptions;
