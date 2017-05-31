@@ -18,7 +18,6 @@ use Zend\Diactoros\Stream;
  */
 class Factory
 {
-
     /**
      * Create a new stream based on the input type.
      *
@@ -29,7 +28,6 @@ class Factory
      */
     public static function create($resource = '', array $options = []): StreamInterface
     {
-
         switch (gettype($resource)) {
             case 'string':
                 $stream = fopen('php://temp', 'r+');
@@ -56,6 +54,5 @@ class Factory
         throw new InvalidStreamException(
             'Invalid resource type: ' . gettype($resource)
         );
-
     }
 }
