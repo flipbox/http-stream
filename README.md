@@ -13,7 +13,7 @@ This package provides a Cache Http Middleware leveraging [Stash](https://github.
 To install, use composer:
 
 ```
-composer require flipbox/http-stream
+composer require flipboxdigital/http-stream
 ```
 
 ## Testing
