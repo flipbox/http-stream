@@ -36,9 +36,8 @@ class IteratorStream implements StreamInterface
      *
      * IteratorStream constructor.
      * @param Traversable $iterator
-     * @param array $options
      */
-    public function __construct(Traversable $iterator, $options = [])
+    public function __construct(Traversable $iterator)
     {
         $this->iterator = $iterator;
     }

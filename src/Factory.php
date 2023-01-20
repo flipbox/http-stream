@@ -10,7 +10,7 @@ namespace Flipbox\Http\Stream;
 
 use Flipbox\Http\Stream\Exceptions\InvalidStreamException;
 use Psr\Http\Message\StreamInterface;
-use Zend\Diactoros\Stream;
+use Laminas\Diactoros\Stream;
 
 /**
  * @author Flipbox Factory <hello@flipboxfactory.com>
@@ -22,11 +22,10 @@ class Factory
      * Create a new stream based on the input type.
      *
      * @param string $resource
-     * @param array $options
      * @return StreamInterface
      * @throws InvalidStreamException
      */
-    public static function create($resource = '', array $options = []): StreamInterface
+    public static function create($resource = ''): StreamInterface
     {
         switch (gettype($resource)) {
             case 'string':
@@ -35,16 +34,16 @@ class Factory
                     fwrite($stream, $resource);
                     fseek($stream, 0);
                 }
-                return new Stream($stream, $options);
+                return new Stream($stream);
             case 'resource':
-                return new Stream($resource, $options);
+                return new Stream($resource);
             case 'object':
                 if ($resource instanceof StreamInterface) {
                     return $resource;
                 } elseif ($resource instanceof \Traversable) {
-                    return new IteratorStream($resource, $options);
+                    return new IteratorStream($resource);
                 } elseif (method_exists($resource, '__toString')) {
-                    return static::createStream((string)$resource, $options);
+                    return static::create((string)$resource);
                 }
                 break;
             case 'NULL':
