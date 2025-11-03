@@ -56,7 +56,7 @@ class IteratorStream implements StreamInterface
     /**
      * @return string
      */
-    public function __toString()
+    public function __toString(): string
     {
         $this->getIterator()->rewind();
         return $this->getContents();
@@ -65,7 +65,7 @@ class IteratorStream implements StreamInterface
     /**
      * @return void
      */
-    public function close()
+    public function close(): void
     {
     }
 
@@ -82,7 +82,7 @@ class IteratorStream implements StreamInterface
     /**
      * @return int|null
      */
-    public function getSize()
+    public function getSize(): ?int
     {
         $iterator = $this->getIterator();
         if ($iterator instanceof Countable) {
@@ -94,7 +94,7 @@ class IteratorStream implements StreamInterface
     /**
      * @return int
      */
-    public function tell()
+    public function tell(): int
     {
         return $this->position;
     }
@@ -102,7 +102,7 @@ class IteratorStream implements StreamInterface
     /**
      * @return bool
      */
-    public function eof()
+    public function eof(): bool
     {
         $iterator = $this->getIterator();
         if ($iterator instanceof Countable) {
@@ -114,7 +114,7 @@ class IteratorStream implements StreamInterface
     /**
      * @return bool
      */
-    public function isSeekable()
+    public function isSeekable(): bool
     {
         return true;
     }
@@ -122,16 +122,16 @@ class IteratorStream implements StreamInterface
     /**
      * @param int $offset
      * @param int $whence
-     * @return bool
+     * @return void
      */
-    public function seek($offset, $whence = SEEK_SET)
+    public function seek(int $offset, int $whence = SEEK_SET): void
     {
         if (!is_int($offset) && !is_numeric($offset)) {
-            return false;
+            return;
         }
         $offset = (int)$offset;
         if ($offset < 0) {
-            return false;
+            return;
         }
         $iterator = $this->getIterator();
         $key = $iterator->key();
@@ -148,23 +148,21 @@ class IteratorStream implements StreamInterface
             ++$key;
         }
         $this->position = $key;
-        return true;
     }
 
     /**
      * @return bool
      */
-    public function rewind()
+    public function rewind(): void
     {
         $this->getIterator()->rewind();
         $this->position = 0;
-        return true;
     }
 
     /**
      * @return bool
      */
-    public function isWritable()
+    public function isWritable(): bool
     {
         return false;
     }
@@ -173,7 +171,7 @@ class IteratorStream implements StreamInterface
      * @param string $string
      * @return bool
      */
-    public function write($string)
+    public function write($string): int
     {
         return false;
     }
@@ -181,7 +179,7 @@ class IteratorStream implements StreamInterface
     /**
      * @return bool
      */
-    public function isReadable()
+    public function isReadable(): bool
     {
         return true;
     }
@@ -190,7 +188,7 @@ class IteratorStream implements StreamInterface
      * @param int $length
      * @return string
      */
-    public function read($length)
+    public function read($length): string
     {
         $index = 0;
         $contents = '';
@@ -207,7 +205,7 @@ class IteratorStream implements StreamInterface
     /**
      * @return string
      */
-    public function getContents()
+    public function getContents(): string
     {
         $contents = '';
         $iterator = $this->getIterator();

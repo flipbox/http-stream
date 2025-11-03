@@ -1,6 +1,10 @@
 # Changelog
 All Notable changes to `http-stream` will be documented in this file
 
+## 3.1.0 - 2025-11-03
+### Changed
+- Updated `laminas/laminas-diactoros` and added typings
+
 ## 3.0.0 - 2023-01-20
 ### Changed
 - Updated dependencies: `zendframework/zend-diactoros` to `laminas/laminas-diactoros`
